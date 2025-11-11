@@ -14,8 +14,14 @@ function onFormInput(evt) {
 function onFormSubmit(evt) {
   evt.preventDefault();
   console.log(formData);
+  if (formData.email === '' || formData.message === '') {
+    alert('Please fill in all the fields!');
+    return;
+  }
   evt.currentTarget.reset();
   localStorage.removeItem('feedback-form-state');
+  formData.email = '';
+  formData.message = '';
 }
 populateForm();
 function populateForm() {
